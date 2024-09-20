@@ -97,18 +97,21 @@ public class Houses {
     }
 
     public void drawHouse(Graphics2D g) {
-        g.drawRect(getX(), getY(), getWidth(), getHeight());
-        g.drawLine(getX(), getY(), getX() + getWidth() / 2, getY() - 50);
-        g.drawLine(getX() + getWidth() / 2, getY() - 50, getX() + getWidth(), getY());
-        setWidthOfWindow(getWidth() / 2);
-        setHeightOfWindow(getWidth() / 2);
-        setxOfWindow(getX() + getWidth() / 4);
-        setyOfWindow(getY() + (getHeight() - getHEIGHT_WINDOW_OVER_FLOOR() - getHeightOfWindow()));
-        g.drawRect(getxOfWindow(), getyOfWindow(), getWidthOfWindow(), getHeightOfWindow());
-        g.drawLine(getxOfWindow() + getWidthOfWindow()/2, getyOfWindow(),
-                   getxOfWindow() + getWidthOfWindow()/2, getyOfWindow() + getHeightOfWindow());
-        g.drawLine(getxOfWindow(), getyOfWindow() + getHeightOfWindow()/2,
-                getxOfWindow() + getWidthOfWindow(), getyOfWindow() + getHeightOfWindow()/2);
+        for (int i = 0; i < 8; i++){ // добавить смещение по координатам х и у, чтобы домики рисовались рядом
+            g.drawRect(getX(), getY(), getWidth(), getHeight());
+            g.drawLine(getX(), getY(), getX() + getWidth() / 2, getY() - 50);
+            g.drawLine(getX() + getWidth() / 2, getY() - 50, getX() + getWidth(), getY());
+            setWidthOfWindow(getWidth() / 2);
+            setHeightOfWindow(getWidth() / 2);
+            setxOfWindow(getX() + getWidth() / 4);
+            setyOfWindow(getY() + (getHeight() - getHEIGHT_WINDOW_OVER_FLOOR() - getHeightOfWindow()));
+            g.drawRect(getxOfWindow(), getyOfWindow(), getWidthOfWindow(), getHeightOfWindow());
+            g.drawLine(getxOfWindow() + getWidthOfWindow()/2, getyOfWindow(),
+                    getxOfWindow() + getWidthOfWindow()/2, getyOfWindow() + getHeightOfWindow());
+            g.drawLine(getxOfWindow(), getyOfWindow() + getHeightOfWindow()/2,
+                    getxOfWindow() + getWidthOfWindow(), getyOfWindow() + getHeightOfWindow()/2);
+
+        }
 
 
 

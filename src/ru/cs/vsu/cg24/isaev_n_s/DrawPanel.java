@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class DrawPanel extends JPanel {
     Sun s;
-    Houses h = new Houses(200, 200, 120, 150);
+    Houses h = new Houses(100, 300, 120, 150);
 
     public DrawPanel() {
         s = new Sun(100, 100, 40, 50, 15);

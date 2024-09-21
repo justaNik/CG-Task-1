@@ -4,7 +4,9 @@ import java.awt.*;
 
 public class Houses {
     private int x, y, width, height;
-    private Color c = Color.gray;
+    private Color cOfHouse = Color.gray;
+    private Color cOfWindow = Color.CYAN;
+    private Color cOfRoof = Color.RED;
     private int widthOfWindow;
     private int heightOfWindow;
     private int xOfWindow; //начальная координата х для окна
@@ -16,6 +18,22 @@ public class Houses {
         this.width = width;
         this.height = height;
 
+    }
+
+    public Color getcOfWindow() {
+        return cOfWindow;
+    }
+
+    public void setcOfWindow(Color cOfWindow) {
+        this.cOfWindow = cOfWindow;
+    }
+
+    public Color getcOfRoof() {
+        return cOfRoof;
+    }
+
+    public void setcOfRoof(Color cOfRoof) {
+        this.cOfRoof = cOfRoof;
     }
 
     public int getxOfWindow() {
@@ -59,12 +77,12 @@ public class Houses {
         this.width = width;
     }
 
-    public Color getC() {
-        return c;
+    public Color getcOfHouse() {
+        return cOfHouse;
     }
 
-    public void setC(Color c) {
-        this.c = c;
+    public void setcOfHouse(Color cOfHouse) {
+        this.cOfHouse = cOfHouse;
     }
 
     public int getX() {
@@ -97,23 +115,44 @@ public class Houses {
     }
 
     public void drawHouse(Graphics2D g) {
-        for (int i = 0; i < 8; i++){ // добавить смещение по координатам х и у, чтобы домики рисовались рядом
-            g.drawRect(getX(), getY(), getWidth(), getHeight());
-            g.drawLine(getX(), getY(), getX() + getWidth() / 2, getY() - 50);
-            g.drawLine(getX() + getWidth() / 2, getY() - 50, getX() + getWidth(), getY());
+        for (int i = 0; i < 7; i++) { // добавить смещение по координатам х и у, чтобы домики рисовались рядом
+            if (i != 0) {
+                setX(getX() + getWidth() + 50);
+            }
             setWidthOfWindow(getWidth() / 2);
             setHeightOfWindow(getWidth() / 2);
             setxOfWindow(getX() + getWidth() / 4);
             setyOfWindow(getY() + (getHeight() - getHEIGHT_WINDOW_OVER_FLOOR() - getHeightOfWindow()));
-            g.drawRect(getxOfWindow(), getyOfWindow(), getWidthOfWindow(), getHeightOfWindow());
-            g.drawLine(getxOfWindow() + getWidthOfWindow()/2, getyOfWindow(),
-                    getxOfWindow() + getWidthOfWindow()/2, getyOfWindow() + getHeightOfWindow());
-            g.drawLine(getxOfWindow(), getyOfWindow() + getHeightOfWindow()/2,
-                    getxOfWindow() + getWidthOfWindow(), getyOfWindow() + getHeightOfWindow()/2);
+
+            g.setColor(cOfHouse);
+            g.fillRect(getX(), getY(), getWidth(), getHeight()); // рисование дома
+            g.drawLine(getX(), getY(), getX() + getWidth() / 2, getY() - 50);
+            g.drawLine(getX() + getWidth() / 2, getY() - 50, getX() + getWidth(), getY());
+
+
+            g.setColor(cOfWindow);
+            g.fillRect(getxOfWindow(), getyOfWindow(), getWidthOfWindow(), getHeightOfWindow()); // рисование окна
+            g.setColor(Color.BLACK);
+            g.drawLine(getxOfWindow() + getWidthOfWindow() / 2, getyOfWindow(),
+                    getxOfWindow() + getWidthOfWindow() / 2, getyOfWindow() + getHeightOfWindow());
+            g.drawLine(getxOfWindow(), getyOfWindow() + getHeightOfWindow() / 2,
+                    getxOfWindow() + getWidthOfWindow(), getyOfWindow() + getHeightOfWindow() / 2);
 
         }
+        /* хотел сделать рисавание треугольника для крыши
+        int xOfRoof = getX();
+        int yOfRoof = getY();
+        public static Shape drawTriangle (Graphics2D g,double x, double y, double height, double width){
+            final GeneralPath triangle = new GeneralPath();
+            triangle.setWindingRule(Path2D.WIND_EVEN_ODD);
+            triangle.moveTo(x - (width / 2.0), y - (height / 2));
+            triangle.lineTo(x + (width / 2.0), y - (height / 2));
+            triangle.lineTo(x + (width / 2.0), y + (height / 2));
+            triangle.lineTo(x - (width / 2.0), y - (height / 2));
+            triangle.closePath();/* w  ww. j  ava 2s.  com*/
 
-
+        //g.draw(triangle);
+        // }
 
 
         // g.drawRect(200, 200, 100, 150);

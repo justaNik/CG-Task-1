@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class Houses {
     private int x, y, width, height;
-    private Color cOfHouse = Color.gray;
+    private Color cOfHouse = Color.DARK_GRAY;
     private Color cOfWindow = Color.CYAN;
     private Color cOfRoof = Color.RED;
     private int widthOfWindow;

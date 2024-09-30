@@ -10,18 +10,19 @@ public class Car {
     // Приватные поля координат и размеров
     private int x;
     private int y;
+    private Color colorOfCar;
     private final int width;
     private final int height;
     private final int wheelRadius;
     private final int roofHeight;
     private final int windowHeight;
-     Color bodyColor = Color.green;
-     Color roofColor = bodyColor;
+
 
     // Конструктор, принимающий только начальные координаты машины
-    public Car(int x, int y) {
+    public Car(int x, int y, Color colorOfCar) {
         this.x = x;
         this.y = y;
+        this.colorOfCar = colorOfCar;
         this.width = 250;         // Ширина главного корпуса машины
         this.height = 60;         // Высота главного корпуса машины
         this.wheelRadius = 20;  // Диаметр колес
@@ -30,20 +31,12 @@ public class Car {
     }
 
 
-    public Color getBodyColor() {
-        return bodyColor;
+    public Color getColorOfCar() {
+        return colorOfCar;
     }
 
-    public void setBodyColor(Color bodyColor) {
-        this.bodyColor = bodyColor;
-    }
-
-    public Color getRoofColor() {
-        return roofColor;
-    }
-
-    public void setRoofColor(Color roofColor) {
-        this.roofColor = roofColor;
+    public void setColorOfCar(Color colorOfCar) {
+        this.colorOfCar = colorOfCar;
     }
 
     public int getX() {
@@ -84,8 +77,11 @@ public class Car {
 
     // Метод отрисовки машины
     public void drawCar(Graphics2D g) {
+        Color bodyColor = getColorOfCar();
+        Color roofColor = bodyColor;
+
         // Установка цвета корпуса машины
-        g.setColor(getBodyColor());
+        g.setColor(bodyColor);
 
         // Отрисовка главного прямоугольника - корпуса машины
         g.fillRect(getX(), getY(), getWidth(), getHeight());
@@ -104,7 +100,7 @@ public class Car {
         //g.fill(new Ellipse2D.Double(x + width - 30, y + height, wheelRadius, wheelRadius));
 
         // Установка цвета для крыши машины (трапеции)
-        g.setColor(getRoofColor());
+        g.setColor(roofColor);
 
         // Координаты для крыши (трапеции)
         int[] xPointsRoof = {getX() + 40, getX() + getWidth() - 40, getX() + getWidth() - 50, getX() + 50};

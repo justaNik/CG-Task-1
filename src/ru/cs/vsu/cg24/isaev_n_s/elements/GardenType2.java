@@ -33,7 +33,7 @@ public class GardenType2 extends GardenType3{
 
         Tree treeRight = new Tree(getX() + getWidth() - 35, currentHeight - heightOfTree - 70,
                 widthOfTree,  heightOfTree,
-                getX() + getWidth() - 40 + widthOfTree / 2 - radius, currentHeight - heightOfTree - 80 - radius, radius);
+                getX() + getWidth() - 35 + widthOfTree / 2 - radius, currentHeight - heightOfTree - 80 - radius, radius);
         treeRight.drawTree(g);
 
 

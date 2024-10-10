@@ -45,7 +45,11 @@ public class Road {
         g.setColor(Color.gray);
         g.fillRect(getX(), getY(), getWidthOfRoad() , getHeigthOfRoad());
         g.setColor(Color.white);
-        g.fillRect(getX(), getY() + getHeigthOfRoad()/2 - 4, getWidthOfRoad(), 8);
+        for (int i = 0; i < getWidthOfRoad() / 100; i++){
+            g.fillRect(getX(), getY() + getHeigthOfRoad()/2 - 4, 100, 8);
+            setX(getX() + 180);
+        }
+
     }
 }
 

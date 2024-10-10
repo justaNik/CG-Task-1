@@ -11,7 +11,7 @@ public class BodyOfHouseType2 extends BodyOfHouseType1{
     public void drawBody(Graphics2D g) {
         setWidthOfWindow((getX() + getWidth() - 10) - (getX() + 10));
         setHeightOfWindow(getHeight() / 4);
-        setxOfWindow(getX() + getX() + 10);
+        setxOfWindow(getX()  + 10);
         setyOfWindow(getY() + (getHeight() - getHEIGHT_WINDOW_OVER_FLOOR() - getHeightOfWindow()));
 
         g.setColor(getColorOfHouse());

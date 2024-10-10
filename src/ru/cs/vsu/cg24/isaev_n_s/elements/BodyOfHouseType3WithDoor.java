@@ -2,7 +2,7 @@ package ru.cs.vsu.cg24.isaev_n_s.elements;
 
 import java.awt.*;
 
-public class BodyOfHouseType3WithDoor {
+public class BodyOfHouseType3WithDoor extends BodyOfHouseType1 {
     private int x, y, width, height;
     private final Color colorOfHouse = Color.DARK_GRAY;
     private Color colorOfDoor;
@@ -10,11 +10,9 @@ public class BodyOfHouseType3WithDoor {
     private int yPointOfDoor;
 
     public BodyOfHouseType3WithDoor(int x, int y, int width, int height) {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
+        super(x, y, width, height);
     }
+
 
     public int getX() {
         return x;
@@ -76,18 +74,18 @@ public class BodyOfHouseType3WithDoor {
         this.yPointOfDoor = yPointOfDoor;
     }
 
-    public void drawBody(Graphics2D g){
+    @Override
+    public void drawBody(Graphics2D g) {
         // рисование дома
-         g.setColor(getColorOfHouse());
-         g.fillRect(getX(), getY(), getWidth(), getHeight());
+        g.setColor(getColorOfHouse());
+        g.fillRect(getX(), getY(), getWidth(), getHeight());
 
         //рисование двери
-         setxPointOfDoor(getX() + getWidth() / 4);
-         setyPointOfDoor(getY() + getHeight() / 3);
-         g.setColor(getColorOfDoor());
-         g.fillRect(getxPointOfDoor(), getyPointOfDoor(), getWidth() / 2, getHeight() / 3 * 2);
+        setxPointOfDoor(getX() + getWidth() / 4);
+        setyPointOfDoor(getY() + getHeight() / 3);
+        g.setColor(getColorOfDoor());
+        g.fillRect(getxPointOfDoor(), getyPointOfDoor(), getWidth() / 2, getHeight() / 3 * 2);
 
         //рисование дверной ручки
-
-     }
+    }
 }

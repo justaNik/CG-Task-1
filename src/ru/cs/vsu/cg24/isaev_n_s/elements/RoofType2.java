@@ -23,7 +23,7 @@ public class RoofType2 extends RoofType1{
         g.setColor(Color.DARK_GRAY);
         g.fillRect(getX() + getWidthOfHouse() - getWidthOfHouse() / 8,
                 getY() - getHeightOfHouse() / 3 - getHeightOfHouse() / 6,
-                getWidthOfHouse() / 4,
+                getWidthOfHouse() / 5,
                 getHeightOfHouse() / 3 + getHeightOfHouse() / 6);
     }
 }

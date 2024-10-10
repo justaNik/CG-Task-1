@@ -13,6 +13,9 @@ public class Car {
     private Color colorOfCar;
     private final int width;
     private final int height;
+    private int xOfHeadlight;
+    private int yOfHeadlight;
+    private int rOfheadlight;
     private final int wheelRadius;
     private final int roofHeight;
     private final int windowHeight;
@@ -28,6 +31,9 @@ public class Car {
         this.wheelRadius = 20;  // Диаметр колес
         this.roofHeight = 40;     // Высота крыши (трапеции)
         this.windowHeight = 25;   // Высота окна (внутри трапеции)
+        this.xOfHeadlight = x + 13;
+        this.yOfHeadlight = y + 13;
+        this.rOfheadlight = 8;
     }
 
 
@@ -75,6 +81,30 @@ public class Car {
         return windowHeight;
     }
 
+    public int getxOfHeadlight() {
+        return xOfHeadlight;
+    }
+
+    public void setxOfHeadlight(int xOfHeadlight) {
+        this.xOfHeadlight = xOfHeadlight;
+    }
+
+    public int getyOfHeadlight() {
+        return yOfHeadlight;
+    }
+
+    public void setyOfHeadlight(int yOfHeadlight) {
+        this.yOfHeadlight = yOfHeadlight;
+    }
+
+    public int getrOfheadlight() {
+        return rOfheadlight;
+    }
+
+    public void setrOfheadlight(int rOfheadlight) {
+        this.rOfheadlight = rOfheadlight;
+    }
+
     // Метод отрисовки машины
     public void drawCar(Graphics2D g) {
         Color bodyColor = getColorOfCar();
@@ -85,7 +115,14 @@ public class Car {
 
         // Отрисовка главного прямоугольника - корпуса машины
         g.fillRect(getX(), getY(), getWidth(), getHeight());
+        //отрисовка выхлопной трубы
+        g.setColor(Color.BLACK);
+        g.fillRect(getX() + getWidth(), getY() + getHeight() - 15, 12, 6);
 
+        //отрисвка фары
+        g.setColor(Color.yellow);
+        g.fillOval(getxOfHeadlight() - getrOfheadlight(), getyOfHeadlight() - getrOfheadlight(),
+                getrOfheadlight() * 2, getrOfheadlight() * 2);
 
         // Установка цвета для колес
         g.setColor(Color.BLACK);

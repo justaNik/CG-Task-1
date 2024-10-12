@@ -49,6 +49,7 @@ public class Road {
             g.fillRect(getX(), getY() + getHeigthOfRoad()/2 - 4, 100, 8);
             setX(getX() + 180);
         }
+        setX(0);
 
     }
 }

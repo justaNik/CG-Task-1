@@ -113,24 +113,25 @@ public class Estate {
     public void drawEstate(Graphics2D g) {
         Random rnd = new Random();
         final int deltaX = 450;
+        int currX = getX();
         for (int i = 0; i < 3; i++) {
-        BodyOfHouseType1[] arrOfBodyHouseTypes = new BodyOfHouseType1[]{
-                new BodyOfHouseType1(getX(), getY(), getWidtOfHouse(), getHeightOfHouse()),
-                new BodyOfHouseType2(getX(), getY(), getWidtOfHouse(), getHeightOfHouse()),
-                new BodyOfHouseType3WithDoor(getX(), getY(), getWidtOfHouse(), getHeightOfHouse())
-        };
+            BodyOfHouseType1[] arrOfBodyHouseTypes = new BodyOfHouseType1[]{
+                    new BodyOfHouseType1(currX, getY(), getWidtOfHouse(), getHeightOfHouse()),
+                    new BodyOfHouseType2(currX, getY(), getWidtOfHouse(), getHeightOfHouse()),
+                    new BodyOfHouseType3WithDoor(currX, getY(), getWidtOfHouse(), getHeightOfHouse())
+            };
 
-        RoofType1[] arrOfRoofTypes = new RoofType1[]{
-                new RoofType1(getX(), getY(), getWidtOfHouse(), getHeightOfHouse(), getColorOfRoof()),
-                new RoofType2(getX(), getY(), getWidtOfHouse(), getHeightOfHouse(), getColorOfRoof()),
-                new RoofType3(getX(), getY(), getWidtOfHouse(), getHeightOfHouse(), getColorOfRoof()),
-        };
+            RoofType1[] arrOfRoofTypes = new RoofType1[]{
+                    new RoofType1(currX, getY(), getWidtOfHouse(), getHeightOfHouse(), getColorOfRoof()),
+                    new RoofType2(currX, getY(), getWidtOfHouse(), getHeightOfHouse(), getColorOfRoof()),
+                    new RoofType3(currX, getY(), getWidtOfHouse(), getHeightOfHouse(), getColorOfRoof()),
+            };
 
-        GardenType3[] arrOfGardenTypes = new GardenType3[]{
-                new GardenType3(getX(), getyOfRoad(), getWidthOfGatden(), getHeightOfGarden()),
-                new GardenType2(getX(), getyOfRoad(), getWidthOfGatden(), getHeightOfGarden()),
-                new GardenType1(getX(), getyOfRoad(), getWidthOfGatden(), getHeightOfGarden())
-        };
+            GardenType3[] arrOfGardenTypes = new GardenType3[]{
+                    new GardenType3(currX, getyOfRoad(), getWidthOfGatden(), getHeightOfGarden()),
+                    new GardenType2(currX, getyOfRoad(), getWidthOfGatden(), getHeightOfGarden()),
+                    new GardenType1(currX, getyOfRoad(), getWidthOfGatden(), getHeightOfGarden())
+            };
 
             setBodyOfHouse(arrOfBodyHouseTypes[rnd.nextInt(2)]);
             setRoofType(arrOfRoofTypes[rnd.nextInt(2)]);
@@ -141,8 +142,9 @@ public class Estate {
             getRoofType().draw(g);
 
 
-            setX(getX() + deltaX);
+            currX += deltaX;
         }
+         currX = getX();
 
 
     }

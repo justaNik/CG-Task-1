@@ -40,7 +40,7 @@ public class DrawPanel extends JPanel {
             ));
         }
 
-        Timer timer = new Timer(500, new ActionListener() {
+        Timer timer = new Timer(20, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 moveCar();  // Двигаем машину
@@ -54,11 +54,13 @@ public class DrawPanel extends JPanel {
 
     // Метод для перемещения машины
     private void moveCar() {
-        car.setX(car.getX() - 5);  // Двигаем машину влево
+        car.setX(car.getX() - 6);  // Двигаем машину влево
+        policeCar.setX(policeCar.getX() - 5);
 
         // Если машина выходит за левый край, возвращаем ее на правый
-        if (car.getX() + car.getWidth() < 0) {
+        if (car.getX() + car.getWidth() < 0 && policeCar.getX() + policeCar.getWidth() < 0) {
             car.setX(1410);  // Возвращаем на правый край
+            policeCar.setX(1810);  // Возвращаем на правый край
         }
     }
 

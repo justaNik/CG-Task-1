@@ -31,8 +31,8 @@ public class Car {
         this.wheelRadius = 20;  // Диаметр колес
         this.roofHeight = 40;     // Высота крыши (трапеции)
         this.windowHeight = 25;   // Высота окна (внутри трапеции)
-        this.xOfHeadlight = x + 13;
-        this.yOfHeadlight = y + 13;
+        //this.xOfHeadlight = x + 13;
+       // this.yOfHeadlight = y + 13;
         this.rOfheadlight = 8;
     }
 
@@ -82,7 +82,7 @@ public class Car {
     }
 
     public int getxOfHeadlight() {
-        return xOfHeadlight;
+        return getX() + 13;
     }
 
     public void setxOfHeadlight(int xOfHeadlight) {
@@ -90,7 +90,7 @@ public class Car {
     }
 
     public int getyOfHeadlight() {
-        return yOfHeadlight;
+        return getY() + 13;
     }
 
     public void setyOfHeadlight(int yOfHeadlight) {

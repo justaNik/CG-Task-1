@@ -133,8 +133,8 @@ public class Estate {
         };
 
             setBodyOfHouse(arrOfBodyHouseTypes[rnd.nextInt(2)]);
-            setRoofType(arrOfRoofTypes[rnd.nextInt(3)]);
-            setGardenType(arrOfGardenTypes[rnd.nextInt(3)]);
+            setRoofType(arrOfRoofTypes[rnd.nextInt(2)]);
+            setGardenType(arrOfGardenTypes[rnd.nextInt(2)]);
 
             getGardenType().drawFrontGarden(g);
             getBodyOfHouse().drawBody(g);

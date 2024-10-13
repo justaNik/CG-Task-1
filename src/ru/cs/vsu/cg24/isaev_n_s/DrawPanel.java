@@ -9,17 +9,17 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.List;
 
 public class DrawPanel extends JPanel {
-    BackGround bckgr = new BackGround();
-    private final java.util.List<Cloud> clouds = new ArrayList<>();
-    Random rnd = new Random();
-    Sun sun;
-    Estate houses;
-    // Houses h = new Houses(120, 250, 120, 150);
-    Road road;
-    Car car;
-    PoliceCar policeCar;
+   private BackGround bckgr = new BackGround();
+    private final List<Cloud> clouds = new ArrayList<>();
+    private static final Random rnd = new Random();
+   private  Sun sun;
+   private Estate houses;
+   private Road road;
+   private Car car;
+   private PoliceCar policeCar;
 
 
     public DrawPanel() {

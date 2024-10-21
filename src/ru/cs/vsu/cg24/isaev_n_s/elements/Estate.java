@@ -2,16 +2,19 @@ package ru.cs.vsu.cg24.isaev_n_s.elements;
 
 import java.awt.*;
 import java.util.Random;
-
+//ЭТОТ КЛАСС ДОЛЖЕН ОТВЕЧАТЬ ЗА СОЗДАНИЕ ОДНОЙ УСАДЬБЫ, А В ЦИКЛЕ В DRAWPANEL ОНИ ДОЛЖНЫ УЖЕ ОТРИСОВЫВАТЬСЯ, ПРИНЦИП ТАКОЙ ЖЕ
+//КАК И С ОБЛАКАМИ
 public class Estate {
     private int x, y, widtOfHouse, heightOfHouse, yOfRoad, heightOfGarden, widthOfGatden;
     private Color colorOfRoof;
 
-    private BodyOfHouseType1 bodyOfHouse;
+    private AbstractBodyOfHouse bodyOfHouse;
     private AbstractRoof roofType;
-    private GardenType3 gardenType;
+    private AbstractGardenType gardenType;
 
-    public Estate(int x, int y, AbstractRoof ar, int widtOfHouse, int heightOfHouse, int yOfRoad, int heightOfGarden, int widthOfGatden, Color colorOfRoof) {
+    //на кой хрен сюда передается экземпляр AbstractRoof?
+    public Estate(int x, int y, AbstractRoof ar, int widtOfHouse, int heightOfHouse,
+                  int yOfRoad, int heightOfGarden, int widthOfGatden, Color colorOfRoof) {
         this.x = x;
         this.y = y;
         this.widtOfHouse = widtOfHouse;
@@ -27,7 +30,7 @@ public class Estate {
         Random rnd = new Random();
         int currX = getX();
 
-        BodyOfHouseType1[] arrOfBodyHouseTypes = new BodyOfHouseType1[]{
+        AbstractBodyOfHouse[] arrOfBodyHouseTypes = new AbstractBodyOfHouse[]{
 
                 new BodyOfHouseType2(currX, getY(), getWidtOfHouse(), getHeightOfHouse()),
                 new BodyOfHouseType1(currX, getY(), getWidtOfHouse(), getHeightOfHouse()),
@@ -35,17 +38,17 @@ public class Estate {
         };
 
         AbstractRoof[] arrOfRoofTypes = new AbstractRoof[]{
-                new RoofType1(currX, getY(), getWidtOfHouse(), getHeightOfHouse(), getColorOfRoof()),
-                new RoofType2(currX, getY(), getWidtOfHouse(), getHeightOfHouse(), getColorOfRoof()),
-                new RoofType3(currX, getY(), getWidtOfHouse(), getHeightOfHouse(), getColorOfRoof()),
+                new RoofType1(),
+                new RoofType2(),
+                new RoofType3(),
         };
 
-        GardenType3[] arrOfGardenTypes = new GardenType3[]{
-
+        AbstractGardenType[] arrOfGardenTypes = new AbstractGardenType[]{
                 new GardenType2(currX, getyOfRoad(), getWidthOfGatden(), getHeightOfGarden()),
                 new GardenType3(currX, getyOfRoad(), getWidthOfGatden(), getHeightOfGarden()),
                 new GardenType1(currX, getyOfRoad(), getWidthOfGatden(), getHeightOfGarden())
         };
+
 
         setBodyOfHouse(arrOfBodyHouseTypes[rnd.nextInt(3)]);
         setRoofType(arrOfRoofTypes[rnd.nextInt(3)]);
@@ -58,7 +61,7 @@ public class Estate {
 
     public void setX(int x) {
         this.x = x;
-        getRoofType().setX(x);
+        //getRoofType().setX(x);
     }
 
     public int getY() {
@@ -117,40 +120,41 @@ public class Estate {
         this.widthOfGatden = widthOfGatden;
     }
 
-    public BodyOfHouseType1 getBodyOfHouse() {
+    public AbstractBodyOfHouse getBodyOfHouse() {
         return bodyOfHouse;
     }
 
-    public void setBodyOfHouse(BodyOfHouseType1 bodyOfHouse) {
+    public void setBodyOfHouse(AbstractBodyOfHouse bodyOfHouse) {
         this.bodyOfHouse = bodyOfHouse;
     }
 
-    public RoofType1 getRoofType() {
+    public AbstractRoof getRoofType() {
         return roofType;
     }
 
-    public void setRoofType(RoofType1 roofType) {
+    public void setRoofType(AbstractRoof roofType) {
         this.roofType = roofType;
     }
 
-    public GardenType3 getGardenType() {
+    public AbstractGardenType getGardenType() {
         return gardenType;
     }
 
-    public void setGardenType(GardenType3 gardenType) {
+    public void setGardenType(AbstractGardenType gardenType) {
         this.gardenType = gardenType;
     }
 
     public void drawEstate(Graphics2D g) {
 
 
-
-            getGardenType().drawFrontGarden(g);
+           /* getGardenType().drawFrontGarden(g);
             getBodyOfHouse().draw(g);
             getRoofType().draw(g);
 
             g.setColor(Color.BLACK);
             g.drawLine(getX(), getY(), getX() + getWidtOfHouse(), getY() + getHeightOfHouse());
+
+            */
 
     }
 }

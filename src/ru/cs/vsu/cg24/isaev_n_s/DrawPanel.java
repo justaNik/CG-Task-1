@@ -16,7 +16,7 @@ public class DrawPanel extends JPanel {
     private final List<Cloud> clouds = new ArrayList<>();
     private static final Random rnd = new Random();
    private  Sun sun;
-   private Estate houses;
+   private List<Estate> houses;
    private Road road;
    private Car car;
    private PoliceCar policeCar;
@@ -29,8 +29,13 @@ public class DrawPanel extends JPanel {
         car = new Car(300, 550, Color.green);
         policeCar = new PoliceCar(700, 550, Color.LIGHT_GRAY);
         sun = new Sun(100, 100, 40, 50, 15);
-        houses = new Estate(120, 250, 120, 150, 500,
-                200, 150, Color.RED);
+        houses = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+
+
+            houses.add(new Estate(120 + i * 450, 250, 120, 150, 500,
+                    200, 150));
+        }
         road = new Road();
 
         for (int i = 0; i < 5; i++) {
@@ -43,7 +48,11 @@ public class DrawPanel extends JPanel {
         Timer timer = new Timer(20, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                moveCar();  // Двигаем машину
+                car.moveCar();
+                policeCar.moveCar();
+                for (Estate h : houses)
+                    h.setX(h.getX()+1);
+                //moveCar();  // Двигаем машину
                 repaint();  // Перерисовываем экран
             }
         });
@@ -52,6 +61,7 @@ public class DrawPanel extends JPanel {
 
     }
 
+    /*
     // Метод для перемещения машины
     private void moveCar() {
         car.setX(car.getX() - 6);  // Двигаем машину влево
@@ -63,6 +73,8 @@ public class DrawPanel extends JPanel {
             policeCar.setX(1810);  // Возвращаем на правый край
         }
     }
+
+     */
 
     private BufferedImage background;
 
@@ -78,7 +90,7 @@ public class DrawPanel extends JPanel {
         }
 
         // Проверяем, существует ли уже буфер для фона
-        if (background == null) {
+        if (background == null || true) {
             background = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
             Graphics2D bg = background.createGraphics();
 
@@ -86,7 +98,10 @@ public class DrawPanel extends JPanel {
             // Отрисовываем дорогу и дома один раз
 
             road.drawRoad(bg);
-            houses.drawEstate(bg);
+            //houses.drawEstate(bg);
+            for (Estate h : houses) {
+                h.drawEstate(bg);
+            }
             bg.dispose();
         }
 

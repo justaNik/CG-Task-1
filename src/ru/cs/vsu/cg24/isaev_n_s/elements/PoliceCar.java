@@ -20,4 +20,14 @@ public class PoliceCar extends Car {
         g.setColor(Color.red);
         g.fillRect(getX() + getWidth() / 2, getY() - getRoofHeight() - 10, 15, 10);
     }
+
+    @Override
+    public void moveCar() {
+        setX(getX() - 5);  // Двигаем машину влево
+
+        // Если машина выходит за левый край, возвращаем ее на правый
+        if (getX() + getWidth() < 0) {
+            setX(1810);  // Возвращаем на правый край
+        }
+    }
 }

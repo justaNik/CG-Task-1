@@ -164,4 +164,14 @@ public class Car {
         // Отрисовка вертикальной разделяющей линии посередине окна
         g.drawLine(getX() + getWidth() / 2, getY() - 5, getX() + getWidth() / 2, getY() - getWindowHeight() - 5);
     }
+
+    public void moveCar(){
+        setX(getX() - 5);  // Двигаем машину влево
+
+        // Если машина выходит за левый край, возвращаем ее на правый
+        if (getX() + getWidth() < -400) {
+            setX(1410);  // Возвращаем на правый край
+
+        }
+    }
 }

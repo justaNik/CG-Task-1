@@ -2,13 +2,13 @@ package ru.cs.vsu.cg24.isaev_n_s.elements;
 
 import java.awt.*;
 
-public class BodyOfHouseType2 extends BodyOfHouseType1{
+public class BodyOfHouseType2 extends AbstractBodyOfHouse{
     public BodyOfHouseType2(int x, int y, int width, int height) {
         super(x, y, width, height);
     }
 
     @Override
-    public void drawBody(Graphics2D g) {
+    public void draw(Graphics2D g) {
         setWidthOfWindow((getX() + getWidth() - 10) - (getX() + 10));
         setHeightOfWindow(getHeight() / 4);
         setxOfWindow(getX()  + 10);

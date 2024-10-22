@@ -21,6 +21,7 @@ public class GardenType1 extends AbstractGardenType{
 
         //рисуем дальний забор
         g.setColor(new Color(90, 45, 10));
+
         for (int i = 0; i <= currentWidth / 50; i++) {
             g.fillRect(startX, getY() - getHeigth() - 30, 10, 50);
             if (i < currentWidth / 50) {
@@ -29,6 +30,8 @@ public class GardenType1 extends AbstractGardenType{
             }
             startX += lengthOfSticks;
         }
+
+
 
         //рисуем боковые заборы
         g.fillRect(getX() + 4, getY() - getHeigth() - 30, 2, (getY() - 80) - (getY() - getHeigth() - 30));
@@ -54,16 +57,6 @@ public class GardenType1 extends AbstractGardenType{
             startX += lengthOfSticks;
         }
 
-        //рисуем дальний забор
-        g.setColor(new Color(90, 45, 10));
-        for (int i = 0; i <= currentWidth / 50; i++) {
-            g.fillRect(startX, getY() - getHeigth() - 30, 10, 50);
-            if (i < currentWidth / 50) {
-                g.fillRect(startX + 10, currentHeight - getHeigth() - 10, lengthOfSticks, 2);
-                g.fillRect(startX + 10, currentHeight - getHeigth() + 10, lengthOfSticks, 2);
-            }
-            startX += lengthOfSticks;
-        }
 
         //рисуем деревья
         Tree treeLeft = new Tree(getX() + 25, currentHeight - heightOfTree - 70,

@@ -5,7 +5,7 @@ import java.util.Random;
 //ЭТОТ КЛАСС ДОЛЖЕН ОТВЕЧАТЬ ЗА СОЗДАНИЕ ОДНОЙ УСАДЬБЫ, А В ЦИКЛЕ В DRAWPANEL ОНИ ДОЛЖНЫ УЖЕ ОТРИСОВЫВАТЬСЯ, ПРИНЦИП ТАКОЙ ЖЕ
 //КАК И С ОБЛАКАМИ
 public class Estate {
-    private int x, y, widtOfHouse, heightOfHouse, yOfRoad, heightOfGarden, widthOfGatden;
+    private int x, currX, y, widthOfHouse, heightOfHouse, yOfRoad, heightOfGarden, widthOfGarden;
     private Color colorOfRoof;
 
     private AbstractBodyOfHouse bodyOfHouse;
@@ -13,28 +13,28 @@ public class Estate {
     private AbstractGardenType gardenType;
 
     //на кой хрен сюда передается экземпляр AbstractRoof?
-    public Estate(int x, int y, AbstractRoof ar, int widtOfHouse, int heightOfHouse,
-                  int yOfRoad, int heightOfGarden, int widthOfGatden, Color colorOfRoof) {
+    public Estate(int x, int y, int widthOfHouse, int heightOfHouse,
+                  int yOfRoad, int heightOfGarden, int widthOfGarden, Color colorOfRoof) {
         this.x = x;
         this.y = y;
-        this.widtOfHouse = widtOfHouse;
+        this.widthOfHouse = widthOfHouse;
         this.heightOfHouse = heightOfHouse;
         this.yOfRoad = yOfRoad;
         this.heightOfGarden = heightOfGarden;
-        this.widthOfGatden = widthOfGatden;
+        this.widthOfGarden = widthOfGarden;
         this.colorOfRoof = colorOfRoof;
-        this.roofType = ar;
+       // this.roofType = ar;
         //массивы с крышами, усадьбами, домами должны создаваться здесь, и этот
         //этот класс создает один экземпляр дома, те, в DrawPanel их должно быть 3
 
         Random rnd = new Random();
-        int currX = getX();
+         setCurrX(getX());
 
         AbstractBodyOfHouse[] arrOfBodyHouseTypes = new AbstractBodyOfHouse[]{
 
-                new BodyOfHouseType2(currX, getY(), getWidtOfHouse(), getHeightOfHouse()),
-                new BodyOfHouseType1(currX, getY(), getWidtOfHouse(), getHeightOfHouse()),
-                new BodyOfHouseType3WithDoor(currX, getY(), getWidtOfHouse(), getHeightOfHouse())
+                new BodyOfHouseType2(getCurrX(), getY(), getWidthOfHouse(), getHeightOfHouse()),
+                new BodyOfHouseType1(getCurrX(), getY(), getWidthOfHouse(), getHeightOfHouse()),
+                new BodyOfHouseType3WithDoor(getCurrX(), getY(), getWidthOfHouse(), getHeightOfHouse())
         };
 
         AbstractRoof[] arrOfRoofTypes = new AbstractRoof[]{
@@ -44,9 +44,9 @@ public class Estate {
         };
 
         AbstractGardenType[] arrOfGardenTypes = new AbstractGardenType[]{
-                new GardenType2(currX, getyOfRoad(), getWidthOfGatden(), getHeightOfGarden()),
-                new GardenType3(currX, getyOfRoad(), getWidthOfGatden(), getHeightOfGarden()),
-                new GardenType1(currX, getyOfRoad(), getWidthOfGatden(), getHeightOfGarden())
+                new GardenType2(getCurrX(), getyOfRoad(), getWidthOfGarden(), getHeightOfGarden()),
+                new GardenType3(getCurrX(), getyOfRoad(), getWidthOfGarden(), getHeightOfGarden()),
+                new GardenType1(getCurrX(), getyOfRoad(), getWidthOfGarden(), getHeightOfGarden())
         };
 
 
@@ -64,6 +64,14 @@ public class Estate {
         //getRoofType().setX(x);
     }
 
+    public int getCurrX() {
+        return currX;
+    }
+
+    public void setCurrX(int currX) {
+        this.currX = currX;
+    }
+
     public int getY() {
         return y;
     }
@@ -72,12 +80,12 @@ public class Estate {
         this.y = y;
     }
 
-    public int getWidtOfHouse() {
-        return widtOfHouse;
+    public int getWidthOfHouse() {
+        return widthOfHouse;
     }
 
-    public void setWidtOfHouse(int widtOfHouse) {
-        this.widtOfHouse = widtOfHouse;
+    public void setWidthOfHouse(int widthOfHouse) {
+        this.widthOfHouse = widthOfHouse;
     }
 
     public int getHeightOfHouse() {
@@ -112,12 +120,12 @@ public class Estate {
         this.heightOfGarden = heightOfGarden;
     }
 
-    public int getWidthOfGatden() {
-        return widthOfGatden;
+    public int getWidthOfGarden() {
+        return widthOfGarden;
     }
 
-    public void setWidthOfGatden(int widthOfGatden) {
-        this.widthOfGatden = widthOfGatden;
+    public void setWidthOfGarden(int widthOfGarden) {
+        this.widthOfGarden = widthOfGarden;
     }
 
     public AbstractBodyOfHouse getBodyOfHouse() {
@@ -146,16 +154,9 @@ public class Estate {
 
     public void drawEstate(Graphics2D g) {
 
-
-           /* getGardenType().drawFrontGarden(g);
-            getBodyOfHouse().draw(g);
-            getRoofType().draw(g);
-
-            g.setColor(Color.BLACK);
-            g.drawLine(getX(), getY(), getX() + getWidtOfHouse(), getY() + getHeightOfHouse());
-
-            */
-
+        getGardenType().draw(g);
+        getBodyOfHouse().draw(g);
+        getRoofType().draw(g, getCurrX(), getY(), getWidthOfHouse(), getHeightOfHouse(), getColorOfRoof());
     }
 }
 

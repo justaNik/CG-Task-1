@@ -12,30 +12,37 @@ import java.util.Random;
 import java.util.List;
 
 public class DrawPanel extends JPanel {
-   private BackGround bckgr = new BackGround();
+    private BackGround bckgr = new BackGround();
     private final List<Cloud> clouds = new ArrayList<>();
     private static final Random rnd = new Random();
-   private  Sun sun;
-   private List<Estate> houses;
-   private Road road;
-   private Car car;
-   private PoliceCar policeCar;
+    private Sun sun;
+    private List<Estate> houses;
+    private Road road;
+    private Car car;
+    private PoliceCar policeCar;
+   /* private AbstractBodyOfHouse[] abh;
+    private AbstractRoof[] ar;
+    private AbstractGardenType[] ag;
+
+    */
 
 
     public DrawPanel() {
-        // Создаем и запускаем таймер для анимации
 
+       /* ar[1] = new RoofType1();
+        ar[2] = new RoofType2();
+        ar[3] = new RoofType3();
 
+        */
         car = new Car(300, 550, Color.green);
         policeCar = new PoliceCar(700, 550, Color.LIGHT_GRAY);
         sun = new Sun(100, 100, 40, 50, 15);
         houses = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-
-
-            houses.add(new Estate(120 + i * 450, 250, 120, 150, 500,
-                    200, 150));
+            houses.add(new Estate(150 + i * 450, 250, 120, 150, 500,
+                    200, 150, Color.red));
         }
+
         road = new Road();
 
         for (int i = 0; i < 5; i++) {
@@ -51,7 +58,7 @@ public class DrawPanel extends JPanel {
                 car.moveCar();
                 policeCar.moveCar();
                 for (Estate h : houses)
-                    h.setX(h.getX()+1);
+                    h.setX(h.getX() + 1);
                 //moveCar();  // Двигаем машину
                 repaint();  // Перерисовываем экран
             }
@@ -106,7 +113,12 @@ public class DrawPanel extends JPanel {
         }
 
         // Рисуем дома и дорогу
-        g.drawImage(background, 0, 0, this);
+        //g.drawImage(background, 0, 0, this);
+        road.drawRoad(g);
+        //houses.drawEstate(bg);
+        for (Estate h : houses) {
+            h.drawEstate(g);
+        }
         car.drawCar(g);
         policeCar.drawCar(g);
     }

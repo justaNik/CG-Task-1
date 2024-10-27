@@ -6,7 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.List;
@@ -20,20 +19,10 @@ public class DrawPanel extends JPanel {
     private Road road;
     private Car car;
     private PoliceCar policeCar;
-   /* private AbstractBodyOfHouse[] abh;
-    private AbstractRoof[] ar;
-    private AbstractGardenType[] ag;
-
-    */
 
 
     public DrawPanel() {
 
-       /* ar[1] = new RoofType1();
-        ar[2] = new RoofType2();
-        ar[3] = new RoofType3();
-
-        */
         car = new Car(300, 550, Color.green);
         policeCar = new PoliceCar(700, 550, Color.LIGHT_GRAY);
         sun = new Sun(100, 100, 40, 50, 15);
@@ -59,31 +48,13 @@ public class DrawPanel extends JPanel {
                 policeCar.moveCar();
                 for (Estate h : houses)
                     h.setX(h.getX() + 1);
-                //moveCar();  // Двигаем машину
-                repaint();  // Перерисовываем экран
+                repaint();
             }
         });
         timer.start();  // Запускаем таймер
 
 
     }
-
-    /*
-    // Метод для перемещения машины
-    private void moveCar() {
-        car.setX(car.getX() - 6);  // Двигаем машину влево
-        policeCar.setX(policeCar.getX() - 5);
-
-        // Если машина выходит за левый край, возвращаем ее на правый
-        if (car.getX() + car.getWidth() < 0 && policeCar.getX() + policeCar.getWidth() < 0) {
-            car.setX(1410);  // Возвращаем на правый край
-            policeCar.setX(1810);  // Возвращаем на правый край
-        }
-    }
-
-     */
-
-    private BufferedImage background;
 
     @Override
     protected void paintComponent(Graphics gr) {
@@ -96,26 +67,9 @@ public class DrawPanel extends JPanel {
             cloud.drawCloud(g);
         }
 
-        // Проверяем, существует ли уже буфер для фона
-        if (background == null || true) {
-            background = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
-            Graphics2D bg = background.createGraphics();
-
-
-            // Отрисовываем дорогу и дома один раз
-
-            road.drawRoad(bg);
-            //houses.drawEstate(bg);
-            for (Estate h : houses) {
-                h.drawEstate(bg);
-            }
-            bg.dispose();
-        }
-
         // Рисуем дома и дорогу
-        //g.drawImage(background, 0, 0, this);
         road.drawRoad(g);
-        //houses.drawEstate(bg);
+
         for (Estate h : houses) {
             h.drawEstate(g);
         }
@@ -139,6 +93,5 @@ public class DrawPanel extends JPanel {
         car.drawCar(g);
         policeCar.drawCar(g);
     }
-
     */
 }

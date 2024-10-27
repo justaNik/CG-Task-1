@@ -2,8 +2,7 @@ package ru.cs.vsu.cg24.isaev_n_s.elements;
 
 import java.awt.*;
 import java.util.Random;
-//ЭТОТ КЛАСС ДОЛЖЕН ОТВЕЧАТЬ ЗА СОЗДАНИЕ ОДНОЙ УСАДЬБЫ, А В ЦИКЛЕ В DRAWPANEL ОНИ ДОЛЖНЫ УЖЕ ОТРИСОВЫВАТЬСЯ, ПРИНЦИП ТАКОЙ ЖЕ
-//КАК И С ОБЛАКАМИ
+
 public class Estate {
     private int x, currX, y, widthOfHouse, heightOfHouse, yOfRoad, heightOfGarden, widthOfGarden;
     private Color colorOfRoof;
@@ -12,7 +11,7 @@ public class Estate {
     private AbstractRoof roofType;
     private AbstractGardenType gardenType;
 
-    //на кой хрен сюда передается экземпляр AbstractRoof?
+    //конструктор класса
     public Estate(int x, int y, int widthOfHouse, int heightOfHouse,
                   int yOfRoad, int heightOfGarden, int widthOfGarden, Color colorOfRoof) {
         this.x = x;
@@ -23,10 +22,6 @@ public class Estate {
         this.heightOfGarden = heightOfGarden;
         this.widthOfGarden = widthOfGarden;
         this.colorOfRoof = colorOfRoof;
-       // this.roofType = ar;
-        //массивы с крышами, усадьбами, домами должны создаваться здесь, и этот
-        //этот класс создает один экземпляр дома, те, в DrawPanel их должно быть 3
-
         Random rnd = new Random();
          setCurrX(getX());
 

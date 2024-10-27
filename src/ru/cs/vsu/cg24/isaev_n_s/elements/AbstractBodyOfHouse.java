@@ -13,6 +13,7 @@ public abstract class AbstractBodyOfHouse {
     private int yOfWindow; // начальная координата у для окна
 
     private Color colorOfDoor;
+    private Color colorOfDoorHandle;
     private int xPointOfDoor;
     private int yPointOfDoor;
 
@@ -129,6 +130,14 @@ public abstract class AbstractBodyOfHouse {
 
     public void setyPointOfDoor(int yPointOfDoor) {
         this.yPointOfDoor = yPointOfDoor;
+    }
+
+    public Color getColorOfDoorHandle() {
+        return colorOfDoorHandle;
+    }
+
+    public void setColorOfDoorHandle(Color colorOfDoorHandle) {
+        this.colorOfDoorHandle = colorOfDoorHandle;
     }
 
     public abstract void draw(Graphics2D g);

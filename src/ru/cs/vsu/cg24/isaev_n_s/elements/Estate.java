@@ -25,6 +25,29 @@ public class Estate {
         Random rnd = new Random();
          setCurrX(getX());
 
+         class BodyHouseProvider implements  InfoProvider{
+             @Override
+             public int getX() {
+                 return getCurrX();
+             }
+
+             @Override
+             public int getY() {
+                 return getCurrX();
+             }
+
+             @Override
+             public int getWidth() {
+                 return getWidthOfHouse();
+             }
+
+             @Override
+             public int getHeight() {
+                 return getHeightOfHouse();
+             }
+         }
+
+         BodyHouseProvider bhp = new BodyHouseProvider();
         AbstractBodyOfHouse[] arrOfBodyHouseTypes = new AbstractBodyOfHouse[]{
 
                 new BodyOfHouseType2(getCurrX(), getY(), getWidthOfHouse(), getHeightOfHouse()),
@@ -38,10 +61,39 @@ public class Estate {
                 new RoofType3(),
         };
 
+        class GardenProvider implements InfoProvider {
+            private int delta;
+
+            public GardenProvider(int delta) {
+                this.delta = delta;
+            }
+
+            @Override
+            public int getX() {
+                return getCurrX() - delta;
+            }
+
+            @Override
+            public int getY() {
+                return getyOfRoad();
+            }
+
+            @Override
+            public int getWidth() {
+                return getWidthOfGarden() + delta*2;
+            }
+
+            @Override
+            public int getHeight() {
+                return getHeightOfGarden();
+            }
+        };
+        GardenProvider gp = new GardenProvider(100);
+
         AbstractGardenType[] arrOfGardenTypes = new AbstractGardenType[]{
-                new GardenType2(getCurrX(), getyOfRoad(), getWidthOfGarden(), getHeightOfGarden()),
-                new GardenType3(getCurrX(), getyOfRoad(), getWidthOfGarden(), getHeightOfGarden()),
-                new GardenType1(getCurrX(), getyOfRoad(), getWidthOfGarden(), getHeightOfGarden())
+                new GardenType2(gp),
+                new GardenType3(gp),
+                new GardenType1(gp)
         };
 
 

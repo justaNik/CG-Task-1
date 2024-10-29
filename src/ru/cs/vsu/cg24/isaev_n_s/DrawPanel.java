@@ -59,6 +59,7 @@ public class DrawPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics gr) {
         Graphics2D g = (Graphics2D) gr;
+        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         super.paintComponent(g);
 
         bckgr.drawBackGround(g);

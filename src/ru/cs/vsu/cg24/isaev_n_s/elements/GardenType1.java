@@ -4,8 +4,8 @@ import java.awt.*;
 
 public class GardenType1 extends AbstractGardenType{
 
-    public GardenType1(int x, int y, int width, int heigth) {
-        super(x, y, width, heigth);
+    public GardenType1(InfoProvider ip) {
+        super(ip);
     }
 
     @Override

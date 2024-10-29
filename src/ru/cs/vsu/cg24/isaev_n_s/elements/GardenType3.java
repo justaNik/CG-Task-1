@@ -7,8 +7,8 @@ import java.awt.*;
 относительно этих координат будет рисоваться весь палисадник
  */
 public class GardenType3 extends AbstractGardenType {
-    public GardenType3(int x, int y, int width, int heigth) {
-        super(x, y, width, heigth);
+    public GardenType3(InfoProvider ip) {
+        super(ip);
     }
 
     @Override
